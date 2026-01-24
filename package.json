@@ -1,18 +1,15 @@
 {
-  "name": "express",
+  "name": "tolik-bot",
   "version": "1.0.0",
-  "engines": {
-  "node": "18.x"
-},
   "description": "",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/express": "^5.0.0",
-    "express": "^4.18.2"
+  "main": "api/webhook.js",
+  "engines": {
+    "node": "18.x"
   },
-  "devDependencies": {
-    "@types/node": "^22.0.0"
+  "scripts": {
+    "start": "node api/webhook.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
