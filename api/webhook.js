@@ -11,13 +11,31 @@ export default async function handler(req, res) {
     return res.status(200).send("no chat");
   }
 
-  const reply = `Привет.
-Я не делаю за тебя.
-Я помогаю увидеть, что ты на самом деле сейчас строишь.
+  const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+  },
+  body: JSON.stringify({
+    model: "gpt-4o-mini",
+    messages: [
+      {
+        role: "system",
+        content: `ТЫ — ТОЛИК. Персональный продюсер мышления и контента.
+Ты задаёшь вопросы, показываешь рамки, усиливаешь решения.
+Ты не мотивируешь и не продаёшь.`,
+      },
+      {
+        role: "user",
+        content: userText,
+      },
+    ],
+  }),
+});
 
-Скажи:
-что ты сейчас делаешь?
-(контент / продукт / блог / проект / хаос / не знаю)`;
+const data = await openaiRes.json();
+const reply = data.choices[0].message.content;
 
   await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`, {
     method: "POST",
