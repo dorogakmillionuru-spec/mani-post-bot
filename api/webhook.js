@@ -18,7 +18,8 @@ await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendM
     chat_id: chatId,
     text: reply
   })
-}); })
+}); 
+                         })
   });
 
   res.status(200).send('ok');
