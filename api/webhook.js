@@ -1,3 +1,3 @@
-module.exports = async function handler(req, res) {
-  return res.status(200).send("alive");
-}
+module.exports = function handler(req, res) {
+  res.status(200).send("alive");
+};
