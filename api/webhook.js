@@ -1,9 +1,9 @@
-import { Client } from "pg";
-const db = new Client({
-  connectionString: process.env.DATABASE_URL,
-});
+// import { Client } from "pg";
+// const db = new Client({
+//   connectionString: process.env.DATABASE_URL,
+// });
 
-db.connect();
+// db.connect();
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(200).send("ok");
@@ -12,14 +12,14 @@ export default async function handler(req, res) {
   const body = req.body || {};
   const chatId = body?.message?.chat?.id;
   const userText = body?.message?.text || "";
-try {
-  await db.query(
-    "insert into messages (telegram_user_id, role, content) values ($1, $2, $3)",
-    [String(chatId), "user", userText]
-  );
-} catch (e) {
-  console.error("DB ERROR:", e);
-}
+// try {
+//   await db.query(
+//     "insert into messages (telegram_user_id, role, content) values ($1, $2, $3)",
+//     [String(chatId), "user", userText]
+//   );
+// } catch (e) {
+//   console.error("DB ERROR:", e);
+// }
   if (!chatId) {
     return res.status(200).send("no chat");
   }
