@@ -1,3 +1,9 @@
+import { Client } from "pg";
+const db = new Client({
+  connectionString: process.env.DATABASE_URL,
+});
+
+db.connect();
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(200).send("ok");
