@@ -11,7 +11,13 @@ export default async function handler(req, res) {
     return res.status(200).send("no chat");
   }
 
-  const reply = `Окей, я понял`;
+  const reply = `Привет.
+Я не делаю за тебя.
+Я помогаю увидеть, что ты на самом деле сейчас строишь.
+
+Скажи:
+что ты сейчас делаешь?
+(контент / продукт / блог / проект / хаос / не знаю)`;
 
   await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`, {
     method: "POST",
