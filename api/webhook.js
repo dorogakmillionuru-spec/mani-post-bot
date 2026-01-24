@@ -1,5 +1,5 @@
-// import { Client } from "pg";
-// const db = new Client({
+ import { Client } from "pg";
+ const db = new Client({
 //   connectionString: process.env.DATABASE_URL,
 // });
 
